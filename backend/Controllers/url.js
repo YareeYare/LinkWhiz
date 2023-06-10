@@ -15,5 +15,13 @@ async function CreateShortURL(req, res) {
   
     return res.json({ id : shortID });
   }
+async function ViewsAndData(req, resp){
+  const shortURL = req.params.shortURL;
+  const data = await url.findOne({shortURL});
+  return resp.json({
+    ViewsTillNow : data.views.length,
+    ViewsData : data.views
+  });
+}
 
-  module.exports = { CreateShortURL };
+  module.exports = { CreateShortURL , ViewsAndData };
