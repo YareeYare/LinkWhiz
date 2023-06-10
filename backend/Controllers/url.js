@@ -7,7 +7,7 @@ async function CreateShortURL(req, res) {
     if (!body.url) return res.status(400).json({ error: "please enter the url" });
     const shortID = shortid();
   
-    await URL.create({
+    await url.create({
       longURL: body.url,
       shortURL: shortID,
       views: []
