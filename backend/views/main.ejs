@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body{
+            font-family : 'Times New Roman', Times, serif;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smol Links</title>
+</head>
+<body>
+    <h1>URL Shortener</h1>
+    <% if(locals.srtURL){ %>
+        <p> Your short URl : localhost:4623/url/<%= srtURL %> </p>
+    <% } %>
+    <div>
+        <form method="POST" action="/url">
+        <label>Enter your URL here!</label>
+        <input
+                type="text" name="url" placeholder="https://YourURL.com" 
+            />
+            <button type="submit"> Shrink it! </button>
+        </form>
+    </div>
+    <div>
+        <% if(locals.urls){%>
+            <table>
+                <thead>
+                    <th>S. No.</th>
+                    <th>Short URL</th>
+                    <th>Original URL</th>
+                    <th>Views</th>
+                </thead>
+                <tbody>
+                    <% urls.forEach((link , i)=>{ %>
+                        <tr>
+                        <td><%= i+1 %></td>
+                        <td><%= link.shortURL %></td>
+                        <td><%= link.longURL %></td>
+                        <td><%= link.views.length %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } %>
+    </div>
+</body>
+</html>

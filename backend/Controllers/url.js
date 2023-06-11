@@ -2,9 +2,9 @@ const url = require('../models/modurl');
 
 const shortid = require("shortid");
 
-async function CreateShortURL(req, res) {
+async function CreateShortURL(req, resp) {
     const body = req.body;
-    if (!body.url) return res.status(400).json({ error: "please enter the url" });
+    if (!body.url) return resp.status(400).json({ error: "please enter the url" });
     const shortID = shortid();
   
     await url.create({
@@ -12,8 +12,7 @@ async function CreateShortURL(req, res) {
       shortURL: shortID,
       views: []
     });
-  
-    return res.json({ id : shortID });
+    resp.render('main' , {srtURL : shortID })
   }
 async function ViewsAndData(req, resp){
   const shortURL = req.params.shortURL;
