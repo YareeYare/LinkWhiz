@@ -53,6 +53,15 @@ app.get('/new-user', (req, resp) => {
     resp.redirect('/signup'); 
 });
 
+app.get('/logout', (req, res) => {
+
+    res.clearCookie('usrid');
+
+    res.redirect('/login');
+});
+
 app.listen(port, ()=>{
     console.log(`App listening on port ${port}`);
 })
+
+
