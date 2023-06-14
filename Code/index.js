@@ -7,7 +7,7 @@ const port = 4623;
 const {mongoDB} = require('./db');
 const modurl = require('./models/modurl')
 const path = require('path')
-mongoDB('mongodb://127.0.0.1:27017/url').then(() =>
+mongoDB('mongodb+srv://HungryHopperAdmin:hhafoods123@cluster0.xorg9y0.mongodb.net/url?retryWrites=true&w=majority').then(() =>
 console.log("mongoDB connected successfully!")
 );
 

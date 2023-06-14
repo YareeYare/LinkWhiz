@@ -10,6 +10,7 @@ async function CreateShortURL(req, resp) {
     await url.create({
       longURL: body.url,
       shortURL: shortID,
+      notes : body.notes,
       views: [],
       createdBy: req.user._id
     });

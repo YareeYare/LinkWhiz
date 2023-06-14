@@ -12,6 +12,9 @@ const UrlSchema = new Schema({
         required : true,
         unique : true
     },
+    notes : {
+        type : String
+    },
     views : [{ clickedON : {type : Number} }],
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,

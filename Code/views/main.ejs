@@ -20,18 +20,26 @@
         <label>Enter your URL here!</label>
         <input
                 type="text" name="url" placeholder="https://YourURL.com" 
-            />
+        />
+
+        <label>Note : </label>
+        <input
+                type="text" name="notes" placeholder="Add a note(optional)" 
+        />
+
             <button type="submit"> Shrink it! </button>
         </form>
     </div>
     <div>
         <% if(locals.urls){%>
-            <table>
+            <table border="0" height="50%" width="50%" align="center"
+            style="border-spacing: 20px 0;">
                 <thead>
                     <th>S. No.</th>
                     <th>Short URL</th>
                     <th>Original URL</th>
                     <th>Views</th>
+                    <th>Notes</th>
                 </thead>
                 <tbody>
                     <% urls.forEach((link , i)=>{ %>
@@ -40,6 +48,7 @@
                         <td><%= link.shortURL %></td>
                         <td><%= link.longURL %></td>
                         <td><%= link.views.length %></td>
+                        <td><%= link.notes %></td>
                         </tr>
                     <% }) %>
                 </tbody>
