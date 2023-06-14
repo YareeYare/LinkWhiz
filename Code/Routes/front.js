@@ -3,7 +3,8 @@ const modurl = require('../models/modurl')
 const router = express.Router()
 
 router.get('/', async (req,resp) =>{
-    const urls = await modurl.find({}) 
+    if(!req.user) return resp.redirect('/login')
+    const urls = await modurl.find({createdBy : req.user._id}) 
     resp.render('main' , {urls : urls})
 })
 router.get('/signup',(req,resp)=>{

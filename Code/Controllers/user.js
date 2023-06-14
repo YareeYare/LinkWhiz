@@ -9,7 +9,7 @@ async function CreateUser(req,resp){
         email : req.body.email,
         password : req.body.password
     });
-    return resp.render('main')
+    return resp.redirect('/');
 }
 
 async function LoginUser(req,resp){
@@ -21,11 +21,9 @@ async function LoginUser(req,resp){
         })
     }
 
-    const UserID = uuidv4()
-    SetUser(UserID , user)
-    resp.cookie('userid' , UserID)
-    return resp.render('main')
-
+    const authToken = SetUser(userdata)
+    resp.cookie('usrid' , authToken)
+    return resp.redirect('/');
 }
  
 

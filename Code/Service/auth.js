@@ -1,11 +1,22 @@
-const UserIDMap = new Map();
+const jwt = require('jsonwebtoken')
+const jwtSecret = "konojorunojobananiwayumegaaru(#_#)"
 
-function SetUser(id, user) {
-    UserIDMap.set(id, user);
+function SetUser(user) {
+  const Payload = {
+    _id : user._id,
+    email : user.email
+  }
+  return jwt.sign( Payload , jwtSecret )
 }
 
-function GetUser(id) {
-  return UserIDMap.get(id);
+function GetUser(authToken) {
+  if(!authToken){ return null; }
+  try{
+    return jwt.verify( authToken , jwtSecret )
+  }
+  catch(error){
+    return null;
+  }
 }
 
 module.exports = { SetUser , GetUser };

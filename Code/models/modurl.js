@@ -13,6 +13,10 @@ const UrlSchema = new Schema({
         unique : true
     },
     views : [{ clickedON : {type : Number} }],
+    createdBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "users",
+    },
 },
     {clickedON : true}
 );
