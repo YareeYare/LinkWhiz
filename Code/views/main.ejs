@@ -15,6 +15,14 @@
     <% if(locals.srtURL){ %>
         <p> Your short URL : localhost:4623/url/<%= srtURL %> </p>
     <% } %>
+
+    <form action="/search" method="GET" align="center">
+        <input type="text" name="query" placeholder="Enter your search query" />
+        <button type="submit">Search</button>
+    </form>
+<br>
+<hr>
+<br>
     <div>
         <form method="POST" action="/url">
         <label>Enter your URL here!</label>
@@ -29,8 +37,8 @@
 
             <button type="submit"> Shrink it! </button>
         </form>
-    </div>
-    <div>
+    <!-- </div>
+    <div> -->
         <% if(locals.urls){%>
             <table border="0" height="50%" width="50%" align="center"
             style="border-spacing: 20px 0;">

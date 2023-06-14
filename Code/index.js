@@ -26,6 +26,24 @@ app.get('/url/:srtURL', async (req,resp)=>{
     resp.redirect(link.longURL);
 });
 
+app.get('/search', (req, res) => {
+    const query = req.query.query;
+    modurl.find({
+      $or: [
+        { longURL : { $regex: query, $options: 'i' } },
+        { shortURL : { $regex: query, $options: 'i' } },
+        { notes : { $regex: query, $options: 'i' } }
+      ]
+    })
+    .then(results => {
+        res.render('search-results', { results, query }); 
+      })
+    .catch(error => {
+        console.error('Error searching URLs:', error);
+        res.status(500).send('An error occurred while searching URLs');
+      });
+  });
+
 app.listen(port, ()=>{
     console.log(`App listening on port ${port}`);
 })

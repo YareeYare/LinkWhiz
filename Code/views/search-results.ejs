@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+</head>
+<body>
+    
+
+    <div class="container">
+        <h1>Search Results</h1>
+        <p>Showing results for: <%= query %></p>
+        <% if (results.length === 0) { %>
+          <p>No results found.</p>
+        <% } else { %>
+          <table>
+            <thead>
+              <tr>
+                <th>Long URL</th>
+                <th>Short URL</th>
+                <th>Note</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% results.forEach((result) => { %>
+                <tr>
+                  <td><%= result.longURL %></td>
+                  <td><%= result.shortURL %></td>
+                  <td><%= result.notes %></td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        <% } %>
+      </div>
+
+
+</body>
+</html>
