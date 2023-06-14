@@ -9,12 +9,13 @@
     
 
     <div class="container">
-        <h1>Search Results</h1>
-        <p>Showing results for: <%= query %></p>
+        <h1 align="center">Search Results</h1>
+        <p align="center">Showing results for: <%= query %></p>
         <% if (results.length === 0) { %>
           <p>No results found.</p>
         <% } else { %>
-          <table>
+          <table border="0" height="50%" width="50%" align="center"
+          style="border-spacing: 0px 0;">
             <thead>
               <tr>
                 <th>Long URL</th>
@@ -24,7 +25,7 @@
             </thead>
             <tbody>
               <% results.forEach((result) => { %>
-                <tr>
+                <tr align="center">
                   <td><%= result.longURL %></td>
                   <td><%= result.shortURL %></td>
                   <td><%= result.notes %></td>

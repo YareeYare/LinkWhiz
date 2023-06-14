@@ -20,6 +20,7 @@ app.use(cookieParser());
 app.use('/url' , LoggedinUser , require('./Routes/url'));
 app.use('/user' , require('./Routes/CreateUser'));
 app.use('/' , AuthorizedOrNot ,require('./Routes/front'));
+app.use('/login' , require('./Routes/CreateUser'))
 app.get('/url/:srtURL', async (req,resp)=>{
     const link = await modurl.findOneAndUpdate({shortURL : req.params.srtURL},
     { $push : {views : {clickedON : Date.now()}}});
@@ -43,6 +44,14 @@ app.get('/search', (req, res) => {
         res.status(500).send('An error occurred while searching URLs');
       });
   });
+
+app.get('/already-a-user', (req, resp) => {
+    resp.redirect('/login'); 
+});
+
+app.get('/new-user', (req, resp) => {
+    resp.redirect('/signup'); 
+});
 
 app.listen(port, ()=>{
     console.log(`App listening on port ${port}`);

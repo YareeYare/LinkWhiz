@@ -4,6 +4,13 @@
     <style>
         body{
             font-family : 'Times New Roman', Times, serif;
+            font-size: 16px;
+        }
+        input[type="text"] {
+            font-size: 13px; 
+        }
+        .my-button {
+            font-size: 13px; 
         }
     </style>
     <meta charset="UTF-8">
@@ -11,39 +18,45 @@
     <title>Smol Links</title>
 </head>
 <body>
-    <h1>URL Shortener</h1>
+    <form action="/already-a-user" method="GET">
+        <button class="my-button" type="submit" style="float: right; margin: 8px 8px;  font-size: 15px;" >Logout</button>
+        <br>
+    </form>
+    <h1 align="center">URL Shortener</h1>
     <% if(locals.srtURL){ %>
-        <p> Your short URL : localhost:4623/url/<%= srtURL %> </p>
+        <p align="center"> Your short URL : localhost:4623/url/<%= srtURL %> </p>
     <% } %>
 
     <form action="/search" method="GET" align="center">
         <input type="text" name="query" placeholder="Enter your search query" />
-        <button type="submit">Search</button>
+        <button class="my-button" type="submit">Search</button>
     </form>
 <br>
 <hr>
 <br>
     <div>
-        <form method="POST" action="/url">
-        <label>Enter your URL here!</label>
+        <form method="POST" action="/url" align="center">
+        <label style='margin-right: 3px;'>Enter your URL here!</label>
         <input
-                type="text" name="url" placeholder="https://YourURL.com" 
+                type="text" name="url" placeholder="https://YourURL.com" style='margin-right: 20px;'
         />
 
-        <label>Note : </label>
+        <label style='margin-right: 3px;'>Note : </label>
         <input
-                type="text" name="notes" placeholder="Add a note(optional)" 
+                type="text" name="notes" placeholder="Add a note(optional)" style='margin-right: 8px;'
         />
 
-            <button type="submit"> Shrink it! </button>
+            <button class="my-button" type="submit"> Shrink it! </button>
         </form>
     <!-- </div>
     <div> -->
+        <br>
+
         <% if(locals.urls){%>
-            <table border="0" height="50%" width="50%" align="center"
+            <table border="0" height="60%" width="80%" align="center"
             style="border-spacing: 20px 0;">
                 <thead>
-                    <th>S. No.</th>
+                    <th width="10%">S No.</th>
                     <th>Short URL</th>
                     <th>Original URL</th>
                     <th>Views</th>
@@ -51,7 +64,7 @@
                 </thead>
                 <tbody>
                     <% urls.forEach((link , i)=>{ %>
-                        <tr>
+                        <tr align="center">
                         <td><%= i+1 %></td>
                         <td><%= link.shortURL %></td>
                         <td><%= link.longURL %></td>

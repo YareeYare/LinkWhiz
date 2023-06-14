@@ -1,19 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        body{
+            font-family : 'Times New Roman', Times, serif;
+            font-size: 16px;
+        }
+        input[type="text"] {
+            font-size: 13px; 
+        }
+        .my-button {
+            font-size: 13px; 
+        }
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
 </head>
-<body>
+<body align="center">
     <h1>Login</h1>
     <form action="/user/login" method="post">
 
-        <label>  Email </label>
+        <label style="padding: 12px;">  Email </label>
         <input type="text" required name="email"></input>
+        <br><br>
         <label> Password </label>
         <input type="text" required name="password"></input>
+        <br>
+        <br>
         <button type="submit">Login</button>
+    </form>
+    <br>
+    <form action="/new-user" method="GET">
+        <button type="submit">New User</button>
     </form>
 </body>
 </html>
