@@ -13,6 +13,7 @@ console.log("mongoDB connected successfully!")
 
 app.set('view engine' , 'ejs');
 app.set('views' , path.resolve('./views'));
+
 app.use(express.json());
 app.use(express.urlencoded ({ extended : false }));
 app.use(cookieParser());
@@ -21,13 +22,15 @@ app.use('/url' , LoggedinUser , require('./Routes/url'));
 app.use('/user' , require('./Routes/CreateUser'));
 app.use('/' , AuthorizedOrNot ,require('./Routes/front'));
 app.use('/login' , require('./Routes/CreateUser'))
+
+
 app.get('/url/:srtURL', async (req,resp)=>{
     const link = await modurl.findOneAndUpdate({shortURL : req.params.srtURL},
     { $push : {views : {clickedON : Date.now()}}});
     resp.redirect(link.longURL);
 });
 
-app.get('/search', (req, res) => {
+app.get('/search', (req, resp) => {
     const query = req.query.query;
     modurl.find({
       $or: [
@@ -37,11 +40,11 @@ app.get('/search', (req, res) => {
       ]
     })
     .then(results => {
-        res.render('search-results', { results, query }); 
+        resp.render('search-results', { results, query }); 
       })
     .catch(error => {
         console.error('Error searching URLs:', error);
-        res.status(500).send('An error occurred while searching URLs');
+        resp.status(500).send('An error occurred while searching URLs');
       });
   });
 
@@ -53,12 +56,14 @@ app.get('/new-user', (req, resp) => {
     resp.redirect('/signup'); 
 });
 
-app.get('/logout', (req, res) => {
-
-    res.clearCookie('usrid');
-
-    res.redirect('/login');
+app.get('/logout', (req, resp) => {
+    resp.clearCookie('usrid');
+    resp.redirect('/login');
 });
+
+app.get('/home' , (req,resp)=>{
+    resp.redirect('/');
+})
 
 app.listen(port, ()=>{
     console.log(`App listening on port ${port}`);

@@ -9,19 +9,34 @@
         input[type="text"] {
             font-size: 13px; 
         }
+        .header{
+            display : flex;
+            justify-content: flex-end;
+        }
         .my-button {
             font-size: 13px; 
+            margin: 8px 5px;
         }
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smol Links</title>
 </head>
+
+
+
 <body>
-    <form action="/logout" method="GET">
-        <button class="my-button" type="submit" style="float: right; margin: 8px 8px;  font-size: 15px;" >Logout</button>
-        <br>
-    </form>
+    <div class="header">
+        <form action="/home" method="GET">
+            <button class="my-button" type="submit">Home</button>
+            <br>
+        </form>
+        <form action="/logout" method="GET">
+            <button class="my-button" type="submit">Logout</button>
+            <br>
+        </form>
+    </div>
+
     <h1 align="center">URL Shortener</h1>
     <% if(locals.srtURL){ %>
         <p align="center"> Your short URL : localhost:4623/url/<%= srtURL %> </p>
@@ -48,8 +63,8 @@
 
             <button class="my-button" type="submit"> Shrink it! </button>
         </form>
-    <!-- </div>
-    <div> -->
+    </div>
+    <div>
         <br>
 
         <% if(locals.urls){%>
@@ -77,4 +92,5 @@
         <% } %>
     </div>
 </body>
+
 </html>
