@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+      .my-button {
+        font-size: 13px; 
+        margin: 8px 5px;
+      }
+      .header{
+            display : flex;
+            justify-content: flex-end;
+      }
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Results</title>
 </head>
 <body>
-    
-
+    <div class="header">
+      <form action="/home" method="GET">
+        <button class="my-button" type="submit">Home</button>
+        <br>
+      </form>
+    </div>
     <div class="container">
         <h1 align="center">Search Results</h1>
         <p align="center">Showing results for: <%= query %></p>
@@ -26,8 +40,8 @@
             <tbody>
               <% results.forEach((result) => { %>
                 <tr align="center">
-                  <td><%= result.longURL %></td>
-                  <td><%= result.shortURL %></td>
+                  <td> <a href="<%= result.longURL %>"> <%= result.longURL %> </a> </td>
+                  <td> <a href="http://localhost:4623/url/<%=result.shortURL%>"> <%= result.shortURL %> </a> </td>
                   <td><%= result.notes %></td>
                 </tr>
               <% }) %>

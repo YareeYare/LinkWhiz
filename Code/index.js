@@ -27,6 +27,7 @@ app.use('/login' , require('./Routes/CreateUser'))
 app.get('/url/:srtURL', async (req,resp)=>{
     const link = await modurl.findOneAndUpdate({shortURL : req.params.srtURL},
     { $push : {views : {clickedON : Date.now()}}});
+    if(link==null){return resp.sendStatus(404)}
     resp.redirect(link.longURL);
 });
 

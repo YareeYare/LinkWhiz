@@ -20,7 +20,7 @@
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smol Links</title>
+    <title>LinkWhiz</title>
 </head>
 
 
@@ -39,7 +39,7 @@
 
     <h1 align="center">URL Shortener</h1>
     <% if(locals.srtURL){ %>
-        <p align="center"> Your short URL : localhost:4623/url/<%= srtURL %> </p>
+        <p align="center"> Your short URL : <a href="http://localhost:4623/url/<%=locals.srtURL%>"> <%=locals.srtURL%> </a> </p>
     <% } %>
 
     <form action="/search" method="GET" align="center">
@@ -81,8 +81,8 @@
                     <% urls.forEach((link , i)=>{ %>
                         <tr align="center">
                         <td><%= i+1 %></td>
-                        <td><%= link.shortURL %></td>
-                        <td><%= link.longURL %></td>
+                        <td> <a href="http://localhost:4623/url/<%=link.shortURL%>"> <%= link.shortURL %> </a> </td>
+                        <td> <a href="<%=link.longURL%>"> <%= link.longURL %> </a> </td>
                         <td><%= link.views.length %></td>
                         <td><%= link.notes %></td>
                         </tr>

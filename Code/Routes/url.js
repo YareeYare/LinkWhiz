@@ -1,7 +1,6 @@
 const express = require( 'express' )
 const router = express.Router()
-const { CreateShortURL , ViewsAndData} = require('../Controllers/url');
+const { CreateShortURL } = require('../Controllers/url'); //, ViewsAndData
 
 router.post('/' , CreateShortURL);
-router.get('/linkdata/:shortURL' , ViewsAndData);
 module.exports = router;
