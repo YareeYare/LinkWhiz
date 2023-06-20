@@ -64,5 +64,6 @@ While working on the LinkWhiz project, I found the following resources and refer
 
 - [Express.js Documentation](https://expressjs.com/)
 - [MongoDB Documentation](https://docs.mongodb.com/)
+- [ShortID Documentation](https://www.npmjs.com/package/shortid?activeTab=readme/)
 - [bcrypt.js Documentation](https://www.npmjs.com/package/bcrypt)
 - [JWT (JSON Web Token) Documentation](https://jwt.io/)
